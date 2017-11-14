@@ -1,3 +1,5 @@
+.. py:module:: web3.main
+
 Overview
 ========
 
@@ -193,30 +195,22 @@ Addresses
 
 .. py:method:: Web3.isAddress(value)
 
-    Returns ``True`` if the value is one of the recognized address formats.
+    Returns ``True`` if the value is a valid `EIP55`_ checksummed address.
+    Note that EIP55 requires the '0x' prefix.
 
-    * Allows for both ``0x`` prefixed and non-prefixed values.
-    * If the address contains mixed upper and lower cased characters this function also
-      checks if the the address checksum is valid according to `EIP55`_
 
     .. code-block:: python
 
         >>> web3.isAddress('0xd3CDA913deB6f67967B99D67aCDFa1712C293601')
         True
-
+        >>> web3.isAddress('0xd3cda913deb6f67967b99d67acdfa1712c293601')
+        False
+        >>> web3.isAddress('d3CDA913deB6f67967B99D67aCDFa1712C293601')
+        False
 
 .. py:method:: Web3.isChecksumAddress(value)
 
-    Returns ``True`` if the value is a valid `EIP55`_ checksummed address
-
-
-    .. code-block:: python
-
-        >>> web3.isChecksumAddress('0xd3CDA913deB6f67967B99D67aCDFa1712C293601')
-        True
-        >>> web3.isChecksumAddress('0xd3cda913deb6f67967b99d67acdfa1712c293601')
-        False
-
+    An alias for :meth:`~Web3.isAddress`
 
 .. py:method:: Web3.toChecksumAddress(value)
 
