@@ -4,7 +4,6 @@ from eth_utils import (
     apply_to_return_value,
     add_0x_prefix,
     from_wei,
-    is_address,
     is_checksum_address,
     keccak,
     remove_0x_prefix,
@@ -90,7 +89,7 @@ class Web3(object):
     fromWei = staticmethod(from_wei)
 
     # Address Utility
-    isAddress = staticmethod(is_address)
+    isAddress = staticmethod(is_checksum_address)
     isChecksumAddress = staticmethod(is_checksum_address)
     toChecksumAddress = staticmethod(to_checksum_address)
 

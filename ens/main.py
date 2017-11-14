@@ -1,6 +1,5 @@
 
 from eth_utils import (
-    is_address,
     is_checksum_address,
     to_checksum_address,
 )
@@ -176,10 +175,7 @@ class ENS:
         resolver = self.resolver(name)
         if resolver:
             lookup_function = getattr(resolver, get)
-            resolved = lookup_function(dot_eth_namehash(name))
-            if is_address(resolved):
-                resolved = to_checksum_address(resolved)
-            return resolved
+            return lookup_function(dot_eth_namehash(name))
         else:
             return None
 
